@@ -1,70 +1,39 @@
 #include <iostream>
-#include <cctype>
 #include<cstring>
-#include "stack.h"
 
-int main() 
-{
-	const int MAXI = 35;
-	Stack pos;
-	char _fullname[MAXI];
-	unsigned _payment;
-	
-	using namespace std;
-	char litera;
-	Iteam Struktura;	
-	cout << "Wprowadz: 'N' nowa pozycja, 'U' usun pozycje, 'K' uciekaj \n";
+class Person{
+	private:
+		static const int LIMIT = 256;
+		std::string lname;
+		char fname[LIMIT];
+	public:
+		Person() { lname = " "; fname[0] = '\0';}
+		Person(const std::string & ln, const char * fn = "Hej ty");
+		//ponizsze metody wysweiitlaja imie i nazwisko
+		void Show() const;
+		void FormalShow() const;
+};
 
-	while( cin >> litera && (toupper(litera) != 'K'))
-	{
-		while(cin.get() != '\n')
-			continue;
-		while(!isalpha(litera))
-		{
-			cout << '\a';
-			continue;
-		}
-		switch(litera)
-		{
-			case 'N':
-			case 'n':
-				{
-					if ( !pos.isfull() )
-					{
-						cout << "Fullname: ";
-						cin >> _fullname;
-						cout << "Payment: ";
-						cin >> _payment;
-						//Iteam Struktura;
-						strcpy(Struktura.fullname, _fullname);
-						Struktura.payment = _payment;
-						pos.push(Struktura);
-					}
-					else
-						cout << "Stos jest pelny!.\n";
-				break;
-				}
-			case 'U' :
-			case 'u' :
-				{
-					if(!pos.isempty())
-					{
-						pos.pop(Struktura);
-						cout << "Aktualnie na stosie-> fullname: " << Struktura.fullname << ", payment: " 
-							<< Struktura.payment << endl;
-					}
-					else
-						cout << "Stos jest pusty";
-				break;
-				}
-				
-			
-		}
-		
-	cout << "Wprowadz: 'N' nowa pozycja, 'U' usun pozycje, 'K' uciekaj \n";	
-	}
+int main() {
 	
-	cout << "\n(-_-) I see you\n";
+	
+	Person A("zolo", "andrzej");
+	A.Show();
+	Person B("kynia");
+	B.Show();
+	Person C = {};
+	C.Show();
 	
 	return 0;
+}
+
+Person::Person(const std::string & ln, const char * fn )
+{
+	lname = ln;
+	strcpy(fname, fn);
+}
+
+void Person::Show() const
+{
+	std::cout << "nazwisko: " << lname << ", imie: " << fname << std::endl ;
 }
