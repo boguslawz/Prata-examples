@@ -1,20 +1,15 @@
 #include <iostream>
-#include "list.h"
-
-inline void doubleIT(Item & x) { x = x*2;}
+#include "plorg.h"
 
 int main()
 {
-	using std::cout;
-	using std::endl;
-	List lis;
 	
-	for(int i = 0; i< 10; i++)
-		{
-			lis.push(i);
-		}
-	lis.printIT();
-	lis.visit(doubleIT);
-	lis.printIT();
+	Plorg Peter;
+	Peter.mow();
+	char a[19] = "dupa";
+	Plorg Denke("Denke", 66);
+	
+	Denke.mow();
+	
 	return 0;
 }
