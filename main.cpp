@@ -1,15 +1,20 @@
 #include <iostream>
-#include "plorg.h"
+#include "mofe.h"
+using namespace std;
 
-int main()
+int main() 
 {
-	
-	Plorg Peter;
-	Peter.mow();
-	char a[19] = "dupa";
-	Plorg Denke("Denke", 66);
-	
-	Denke.mow();
+	Move kaska;
+	kaska.showmove();
+	kaska = Move(2,3);
+	kaska.showmove();
+	kaska.reset();	
+	kaska.showmove();
+	kaska = Move(20,30);
+	Move kaska_01(100,200);
+	Move ciekawe;
+	ciekawe = kaska.add(kaska_01);
+	ciekawe.showmove();	
 	
 	return 0;
 }
